@@ -8,7 +8,8 @@ class App extends React.Component {
     this.state = {
       counterValue: '0',
       textValue: '',
-      buttonValue: 0
+      buttonValue: 0,
+      buttonToggle: false
     }
   }
 
@@ -39,6 +40,12 @@ class App extends React.Component {
   addFive(e) {
     this.setState({
       buttonValue: (this.state.buttonValue < 96) ? this.state.buttonValue + 5 : 100
+    });
+  }
+
+  handleClick(e) {
+    this.setState({
+      buttonToggle: !this.state.buttonToggle
     });
   }
 
@@ -73,30 +80,34 @@ class App extends React.Component {
           </input>
         </div>
       {/*Button*/}
-      <div>
-        Output Value: {this.state.buttonValue}<br/>
-        <button
-          onClick={this.substractFive.bind(this)}
-        >
-        -5
-        </button>
-        <button
-          onClick={this.substract.bind(this)}
-        >
-        -
-        </button>
-        <button
-          onClick={this.add.bind(this)}
-        >
-        +
-        </button>
-        <button
-          onClick={this.addFive.bind(this)}
-        >
-        +5
-        </button>
+        <div>
+          Output Value: {this.state.buttonValue}<br/>
+          <button
+            onClick={this.substractFive.bind(this)}
+          >
+          -5
+          </button>
+          <button
+            onClick={this.substract.bind(this)}
+          >
+          -
+          </button>
+          <button
+            onClick={this.add.bind(this)}
+          >
+          +
+          </button>
+          <button
+            onClick={this.addFive.bind(this)}
+          >
+          +5
+          </button>
+        </div>
+        {/*Toggle Modal*/}
+        <div>
+          <button className={this.state.buttonToggle ? "button toggled" : "button"} onClick={this.handleClick.bind(this)}>Click me!!!</button>
+        </div>
       </div>
-    </div>
     );
   }
 }
