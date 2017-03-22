@@ -33,9 +33,7 @@
 	background-color: #2f70e1;
 	color: #fff;
 }
-button {
-  margin-top: 80px;
-}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
