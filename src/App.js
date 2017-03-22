@@ -19,27 +19,16 @@ class App extends React.Component {
       textValue:  this.refs.text.value,
     });
   }
-  substractFive(e) {
+
+  substract(value) {
     this.setState({
-      buttonValue: (this.state.buttonValue > 4) ? this.state.buttonValue - 5 : 0
+      buttonValue: (this.state.buttonValue > (value - 1)) ? this.state.buttonValue - value : 0
     });
   }
 
-  substract(e) {
+  add(value) {
     this.setState({
-      buttonValue: (this.state.buttonValue > 0) ? this.state.buttonValue - 1 : this.state.buttonValue
-    });
-  }
-
-  add(e) {
-    this.setState({
-      buttonValue: (this.state.buttonValue < 100) ? this.state.buttonValue + 1 : this.state.buttonValue
-    });
-  }
-
-  addFive(e) {
-    this.setState({
-      buttonValue: (this.state.buttonValue < 96) ? this.state.buttonValue + 5 : 100
+      buttonValue: (this.state.buttonValue < 100 - (value - 1)) ? this.state.buttonValue + value : 100
     });
   }
 
@@ -83,29 +72,29 @@ class App extends React.Component {
         <div>
           Output Value: {this.state.buttonValue}<br/>
           <button
-            onClick={this.substractFive.bind(this)}
+            onClick={() => this.substract(5)}
           >
           -5
           </button>
           <button
-            onClick={this.substract.bind(this)}
+            onClick={() => this.substract(1)}
           >
           -
           </button>
           <button
-            onClick={this.add.bind(this)}
+            onClick={() => this.add(1)}
           >
           +
           </button>
           <button
-            onClick={this.addFive.bind(this)}
+            onClick={() => this.add(5)}
           >
           +5
           </button>
         </div>
         {/*Toggle Modal*/}
         <div>
-          <button className={this.state.buttonToggle ? "button toggled" : "button"} onClick={this.handleClick.bind(this)}>Click me!!!</button>
+          <a className={this.state.buttonToggle ? "button toggled" : "button"} onClick={this.handleClick.bind(this)}>Click me!!!</a>
         </div>
       </div>
     );
