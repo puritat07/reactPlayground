@@ -2,20 +2,11 @@
   text-align: center;
 }
 
-.button {
-  display: inline-block;
-	font-size: 18px;
-	color: #2f70e1;
-	padding: 10px 30px;
-	box-shadow:	0px 1px 3px 0px rgba(0, 0, 0, .3);
-  cursor: pointer;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
+.modal {
+  display: none;
 }
-.toggled {
-	background-color: #2f70e1;
-	color: #fff;
+.show {
+	display: block;
 }
 
 @keyframes App-logo-spin {

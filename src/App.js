@@ -9,7 +9,7 @@ class App extends React.Component {
       counterValue: '0',
       textValue: '',
       buttonValue: 0,
-      buttonToggle: false
+      modalToggle: false
     }
   }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
 
   handleClick(e) {
     this.setState({
-      buttonToggle: !this.state.buttonToggle
+      modalToggle: !this.state.modalToggle
     });
   }
 
@@ -94,7 +94,29 @@ class App extends React.Component {
         </div>
         {/*Toggle Modal*/}
         <div>
-          <a className={this.state.buttonToggle ? "button toggled" : "button"} onClick={this.handleClick.bind(this)}>Click me!!!</a>
+          <button onClick={this.handleClick.bind(this)}>Click to {this.state.modalToggle ? "hide" : "show"}!!!</button>
+          <div className={this.state.modalToggle ? "modal show" : "modal"}>
+            Hello World
+            <br />
+            Sign in:
+            <input
+              type="text"
+              width="100px"
+              placeholder="Enter Username..."
+            />
+            <br />
+            Password:
+            <input
+              type="password"
+              width="100px"
+              placeholder="Enter Password..."
+            />
+            <br />
+            <input
+              type="Submit"
+              value="Sign in"
+            />
+          </div>
         </div>
       </div>
     );
