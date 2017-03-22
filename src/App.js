@@ -7,18 +7,45 @@ class App extends React.Component {
     super();
     this.state = {
       counterValue: '0',
-      textValue: ''
+      textValue: '',
+      buttonValue: 0,
+      buttonToggle: false
     }
   }
 
-  updateCounter(e) {
+  update() {
     this.setState({
-      counterValue: e.target.value
+      counterValue: this.refs.counter.value,
+      textValue:  this.refs.text.value,
     });
   }
-  updateText(e) {
+  substractFive(e) {
     this.setState({
-      textValue:  e.target.value
+      buttonValue: (this.state.buttonValue > 4) ? this.state.buttonValue - 5 : 0
+    });
+  }
+
+  substract(e) {
+    this.setState({
+      buttonValue: (this.state.buttonValue > 0) ? this.state.buttonValue - 1 : this.state.buttonValue
+    });
+  }
+
+  add(e) {
+    this.setState({
+      buttonValue: (this.state.buttonValue < 100) ? this.state.buttonValue + 1 : this.state.buttonValue
+    });
+  }
+
+  addFive(e) {
+    this.setState({
+      buttonValue: (this.state.buttonValue < 96) ? this.state.buttonValue + 5 : 100
+    });
+  }
+
+  handleClick(e) {
+    this.setState({
+      buttonToggle: !this.state.buttonToggle
     });
   }
 
@@ -26,11 +53,60 @@ class App extends React.Component {
     return (
       <div>
         {/*Counter*/}
-        <div>Counter: {this.state.counterValue}</div>
-        <input style={{width:'100px'}} type="number" min="0" max="100" placeholder="Enter 0-100" onChange={this.updateCounter.bind(this)}></input>
+        <div>
+          Counter: {this.state.counterValue}<br/>
+          <input
+            ref="counter"
+            style={
+              {
+                width:'100px'
+              }
+            }
+            type="number"
+            min="0"
+            max="100"
+            placeholder="Enter 0-100"
+            onChange={this.update.bind(this)}>
+          </input>
+        </div>
         {/*Text*/}
-        <div>Text: {this.state.textValue}</div>
-        <input type="text" placeholder="Enter text here..." onChange={this.updateText.bind(this)}></input>
+        <div>
+          Text: {this.state.textValue}<br/>
+          <input
+            ref="text"
+            type="text"
+            placeholder="Enter text here..."
+            onChange={this.update.bind(this)}>
+          </input>
+        </div>
+      {/*Button*/}
+        <div>
+          Output Value: {this.state.buttonValue}<br/>
+          <button
+            onClick={this.substractFive.bind(this)}
+          >
+          -5
+          </button>
+          <button
+            onClick={this.substract.bind(this)}
+          >
+          -
+          </button>
+          <button
+            onClick={this.add.bind(this)}
+          >
+          +
+          </button>
+          <button
+            onClick={this.addFive.bind(this)}
+          >
+          +5
+          </button>
+        </div>
+        {/*Toggle Modal*/}
+        <div>
+          <button className={this.state.buttonToggle ? "button toggled" : "button"} onClick={this.handleClick.bind(this)}>Click me!!!</button>
+        </div>
       </div>
     );
   }
