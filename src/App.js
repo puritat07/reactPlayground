@@ -23,7 +23,7 @@ class App extends React.Component {
       textValue:  this.refs.text.value,
       minVal: parseInt(this.refs.minVal.value),
       maxVal: parseInt(this.refs.maxVal.value),
-      stepChange: parseInt(this.refs.stepChange.value)
+      stepChange: parseInt(this.refs.stepChange.value) > 0 ? parseInt(this.refs.stepChange.value) : 1
     });
   }
 
