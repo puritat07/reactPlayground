@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -19,11 +19,11 @@ class App extends React.Component {
 
   update() {
     this.setState({
-      counterValue: this.refs.counter.value,
+      counterValue: parseInt(this.refs.counter.value,10) < 100 ? parseInt(this.refs.counter.value,10) : 100,
       textValue:  this.refs.text.value,
-      minVal: parseInt(this.refs.minVal.value),
-      maxVal: parseInt(this.refs.maxVal.value),
-      stepChange: parseInt(this.refs.stepChange.value) > 0 ? parseInt(this.refs.stepChange.value) : 1
+      minVal: parseInt(this.refs.minVal.value,10),
+      maxVal: parseInt(this.refs.maxVal.value,10),
+      stepChange: parseInt(this.refs.stepChange.value,10) > 1 ? parseInt(this.refs.stepChange.value,10) : 2
     });
   }
 
